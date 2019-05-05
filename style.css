@@ -1,0 +1,53 @@
+div{
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.header{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.playArea{
+    position: relative;
+    top: 120px;
+    width: 1400px;
+    height: 400px;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+
+.playerSide{
+    width: 550px;
+}
+
+.btnList{
+    margin: 0%;
+    padding: 0%;
+    position: relative;
+    top: 50px;
+}
+
+.button{
+    width: 120px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+}
+
+.rockBtn{
+    background-image: url("rock.jpg");
+}
+
+.paperBtn{
+    background-image: url("paper.jpg");
+}
+
+.scissorsBtn{
+    background-image: url("scissors.jpg");
+}
