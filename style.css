@@ -10,6 +10,7 @@ div{
 }
 
 .playArea{
+    text-align: center;
     position: relative;
     top: 120px;
     width: 1400px;
@@ -24,6 +25,13 @@ div{
 
 .playerSide{
     width: 550px;
+}
+
+.winner{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 250px;
+    height: 350px;
 }
 
 .btnList{
