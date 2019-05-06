@@ -1,3 +1,17 @@
+var computerPlay;
+var cprock = document.getElementById("cpRockBtn");
+var cppaper = document.getElementById("cpPaperBtn");
+var cpscissors = document.getElementById("cpSciBtn");
+var cpChoice = document.getElementById("computerChoice");
+
+var playerPlay;
+var plrock = document.getElementById("plRockBtn");
+var plpaper = document.getElementById("plPaperBtn");
+var plscissors = document.getElementById("plSciBtn");
+var plChoice = document.getElementById("playerChoice");
+
+listen();
+
 function randomPlay(){
     var play = Math.floor(Math.random() * 3);
     switch(play){
@@ -6,11 +20,6 @@ function randomPlay(){
         case 2: return "scissors";
     }
 }
-var computerPlay = "";
-var cprock = document.getElementById("cpRockBtn");
-var cppaper = document.getElementById("cpPaperBtn");
-var cpscissors = document.getElementById("cpSciBtn");
-var cpChoice = document.querySelector("#computerChoice");
 
 function opponent(){
     var comPlay = randomPlay();
@@ -29,34 +38,10 @@ function opponent(){
         cpscissors.style.border = "thick solid black";
         cpChoice.src = "scissorshandcp.png";
     }
+    return comPlay;
 }
 
-var playerPlay = "";
-var plrock = document.querySelector("#plRockBtn");
-var plpaper = document.querySelector("#plPaperBtn");
-var plscissors = document.querySelector("#plSciBtn");
-var plChoice = document.querySelector("#playerChoice");
-
-plrock.addEventListener("click", function(){
-    plChoice.src = "rockhandpl.png";
-    playerPlay = "rock";
-    computerPlay = opponent();
-});
-
-plpaper.addEventListener("click", function(){
-    plChoice.src = "paperhandpl.png";
-    playerPlay = "paper";
-    computerPlay = opponent();
-});
-
-plscissors.addEventListener("click", function(){
-    plChoice.src = "scissorshandpl.png";
-    playerPlay = "scissors";
-    computerPlay = opponent();
-});
-
 function Win(playerSelection, computerSelection){
-    alert('hena');
     if(playerSelection == computerSelection)
         return 0;
     if((playerSelection == 'rock' && computerSelection == 'scissors') ||
@@ -66,17 +51,47 @@ function Win(playerSelection, computerSelection){
     return -1;
 }
 
-var winner = Win(playerPlay, computerPlay);
-console.log("and the winner iiiis " + playerPlay + " " + computerPlay);
-var displayWinner = document.querySelector("#roundWinner");
-if(winner == 1){
-    displayWinner.src = "mickeyWon.png";
-    console.log("and the winner iiiis " + playerPlay + " " + computerPlay);
+function result(){
+    var winner = Win(playerPlay, computerPlay);
+    var displayWinner = document.querySelector("#roundWinner");
+    if(winner == 1){
+        displayWinner.style.width = "250px"
+        displayWinner.src = "mickeyWon.png";
+    }
+    else if(winner == -1){
+        displayWinner.style.width = "250px"
+        displayWinner.src = "minnieWon.png";
+    }
+    else{
+        displayWinner.style.width = "360px"
+        displayWinner.src = "tie.png";
+    }
 }
-else if(winner == -1){
-    displayWinner.src = "minnieWon.png";
-    console.log("and the winner iiiis " + playerPlay + " " + computerPlay);
+
+function listen(){
+    plrock.addEventListener("click", function(){
+        plChoice.src = "rockhandpl.png";
+        playerPlay = "rock";
+        computerPlay = opponent();
+        result();
+    });
+    
+    plpaper.addEventListener("click", function(){
+        plChoice.src = "paperhandpl.png";
+        playerPlay = "paper";
+        computerPlay = opponent();
+        result();
+    });
+    
+    plscissors.addEventListener("click", function(){
+        plChoice.src = "scissorshandpl.png";
+        playerPlay = "scissors";
+        computerPlay = opponent();
+        result();
+    });
 }
-else{
-    console.log("and the winner iiiis " + playerPlay + " " + computerPlay);
-}
+
+
+
+
+    
